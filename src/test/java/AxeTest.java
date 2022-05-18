@@ -26,6 +26,16 @@ public class AxeTest {
     public void canAttack(){
         axe.attack(orc);
         assertEquals(75, orc.getHealth());
+        assertEquals("Ouch", orc.takeDamage(axe));
+    }
+
+    @Test
+    public void canKill(){
+        axe.attack(orc);
+        axe.attack(orc);
+        axe.attack(orc);
+        axe.attack(orc);
+        assertEquals("Arghhhhhh *dead*", orc.takeDamage(axe));
     }
 
 }
