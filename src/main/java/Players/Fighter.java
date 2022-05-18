@@ -1,7 +1,9 @@
 package Players;
 
 import Behaviours.IAttack;
+import Behaviours.IHeal;
 import Enemies.Enemy;
+import HealingRemedies.Remedy;
 
 public abstract class Fighter extends Player{
 
@@ -23,5 +25,11 @@ public abstract class Fighter extends Player{
     public void attack(Enemy enemy){
         this.getWeapon().attack(enemy);
     }
+
+    public void getHealed(IHeal remedy){
+        int health = this.getHealth();
+        this.setHealth(health += ((Remedy) remedy).getHealingPower());
+    }
+
 
 }

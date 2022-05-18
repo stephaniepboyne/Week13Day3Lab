@@ -1,5 +1,6 @@
 import Behaviours.IAttack;
 import Enemies.Orc;
+import HealingRemedies.Herbs;
 import Players.Barbarian;
 import Weapons.Axe;
 import Weapons.Sword;
@@ -15,6 +16,7 @@ public class BarbarianTest {
     IAttack weapon;
     IAttack weapon2;
     Orc orc;
+    Herbs herbs;
 
     @Before
     public void before(){
@@ -22,7 +24,7 @@ public class BarbarianTest {
         weapon2 = new Axe(25);
         barbarian = new Barbarian("Conan", 100, weapon);
         orc = new Orc(80);
-
+        herbs = new Herbs(20);
     }
 
     @Test
@@ -51,6 +53,12 @@ public class BarbarianTest {
         barbarian.setWeapon(weapon2);
         barbarian.attack(orc);
         assertEquals(55, orc.getHealth());
+    }
+
+    @Test
+    public void canGetHealed(){
+        barbarian.getHealed(herbs);
+        assertEquals(120, barbarian.getHealth());
     }
 
 }
